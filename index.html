@@ -9,7 +9,7 @@
 <body>
 <div class="max-w">
   <h1>융합코딩부 파이썬 프로젝트</h1>
-  <p class="subtitle">데모를 직접 실행해보고, 비밀번호 입력 후 코드를 확인하세요.</p>
+  <p class="subtitle">샘플 입출력을 확인하고, 비밀번호 입력 후 코드를 확인하세요.</p>
 
   <div class="pw-banner">
     <span>코드 열람 비밀번호</span>
@@ -28,10 +28,15 @@
 
       <div class="card">
         <div><span class="badge badge-init">초급</span><p class="card-title">MBTI 테스트</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="mbti-out">아래 버튼을 눌러 시작하세요.</div>
-          <div class="demo-row" id="mbti-btns"><button class="demo-btn" onclick="mbtiStart()">시작</button></div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">&lt; 당신의 MBTI는 무엇인가요? &gt;</span>
+<span class="term-prompt">y/n으로 대답해주세요.</span>
+
+<span class="term-prompt">말을 잘 거는 편인가요? : </span><span class="term-input">y</span>
+<span class="term-prompt">상상하는 것을 좋아하나요? : </span><span class="term-input">n</span>
+<span class="term-prompt">공감하는 것을 어려워하나요? : </span><span class="term-input">y</span>
+<span class="term-prompt">현재 방이 어질러진 상태인가요? : </span><span class="term-input">n</span>
+
+당신의 MBTI는 ESTJ입니다!</div>
         <button class="code-toggle" onclick="tryToggle('mbti-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="mbti-code">print(" &lt; 당신의 MBTI는 무엇인가요? &gt; ")
 print(" y/n으로 대답해주세요. ")
@@ -65,14 +70,14 @@ print("당신의 MBTI는 " + ei+ns+ft+pj + "입니다!")</div>
 
       <div class="card">
         <div><span class="badge badge-init">초급</span><p class="card-title">사칙연산 계산기</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="calc-out">두 숫자를 입력하고 계산하세요.</div>
-          <div class="demo-row">
-            <input class="demo-input" type="number" id="calc-a" placeholder="첫번째 숫자" value="12">
-            <input class="demo-input" type="number" id="calc-b" placeholder="두번째 숫자" value="4">
-            <button class="demo-btn" onclick="calcRun()">계산</button>
-          </div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">&lt; 사칙 연산 계산기 &gt;</span>
+<span class="term-prompt">첫번째 숫자를 입력해주세요 : </span><span class="term-input">12</span>
+<span class="term-prompt">두번째 숫자를 입력해주세요 : </span><span class="term-input">4</span>
+
+12  +  4  =  16
+12  -  4  =  8
+12  *  4  =  48
+12  /  4  =  3.0</div>
         <button class="code-toggle" onclick="tryToggle('calc-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="calc-code">print("&lt; 사칙 연산 계산기 &gt;")
 a = int(input("첫번째 숫자를 입력해주세요 : "))
@@ -86,10 +91,16 @@ print(a, " / ", b, " = ", a/b)</div>
 
       <div class="card">
         <div><span class="badge badge-init">초급</span><p class="card-title">나만의 퀴즈 게임</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="quiz-out">시작 버튼을 눌러 퀴즈를 시작하세요!</div>
-          <div class="demo-row" id="quiz-row"><button class="demo-btn" onclick="quizStart()">시작</button></div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">=== 나만의 퀴즈 게임 ===</span>
+
+<span class="term-prompt">Q1. 파이썬을 만든 사람은? : </span><span class="term-input">귀도 반 로섬</span>
+정답!
+<span class="term-prompt">Q2. 대한민국의 수도는? : </span><span class="term-input">서울</span>
+정답!
+<span class="term-prompt">Q3. 1 + 1 = ? : </span><span class="term-input">3</span>
+오답! 정답은 2입니다.
+
+최종 점수: 2 / 3</div>
         <button class="code-toggle" onclick="tryToggle('quiz-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="quiz-code">print("=== 나만의 퀴즈 게임 ===")
 score = 0
@@ -117,13 +128,10 @@ print("최종 점수:", score, "/ 3")</div>
 
       <div class="card">
         <div><span class="badge badge-init">초급</span><p class="card-title">짝수/홀수 판별기</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="num-out">숫자를 입력하고 판별하세요.</div>
-          <div class="demo-row">
-            <input class="demo-input" type="number" id="num-in" placeholder="숫자 입력" value="7">
-            <button class="demo-btn" onclick="numRun()">판별</button>
-          </div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">7</span>
+
+7 은(는) 홀수입니다.
+7 은(는) 소수입니다.</div>
         <button class="code-toggle" onclick="tryToggle('num-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="num-code">n = int(input("숫자를 입력하세요 : "))
 
@@ -152,17 +160,16 @@ else:
 
       <div class="card">
         <div><span class="badge badge-mid">중급</span><p class="card-title">학교 성적 계산기</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="grade-out">과목별 점수를 입력하고 계산하세요.</div>
-          <div class="demo-row" style="flex-direction:column;gap:6px">
-            <div style="display:flex;gap:6px">
-              <input class="demo-input" type="number" id="g1" placeholder="국어" value="85">
-              <input class="demo-input" type="number" id="g2" placeholder="수학" value="72">
-              <input class="demo-input" type="number" id="g3" placeholder="영어" value="90">
-            </div>
-            <button class="demo-btn" style="align-self:flex-start" onclick="gradeRun()">계산</button>
-          </div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">국어 점수를 입력하세요 : </span><span class="term-input">85</span>
+<span class="term-prompt">수학 점수를 입력하세요 : </span><span class="term-input">72</span>
+<span class="term-prompt">영어 점수를 입력하세요 : </span><span class="term-input">90</span>
+
+=== 성적 결과 ===
+국어 : 85 점
+수학 : 72 점
+영어 : 90 점
+평균 : 82.3 점
+등급 : B</div>
         <button class="code-toggle" onclick="tryToggle('grade-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="grade-code">subjects = ["국어", "수학", "영어"]
 scores = []
@@ -188,15 +195,15 @@ print("등급 :", grade)</div>
 
       <div class="card">
         <div><span class="badge badge-mid">중급</span><p class="card-title">가위바위보</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="rps-out">아래 버튼을 눌러 가위바위보!</div>
-          <div class="demo-row">
-            <button class="demo-btn" onclick="rpsPlay('가위')">가위</button>
-            <button class="demo-btn" onclick="rpsPlay('바위')">바위</button>
-            <button class="demo-btn" onclick="rpsPlay('보')">보</button>
-            <button class="demo-btn" onclick="rpsReset()">초기화</button>
-          </div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">가위</span>
+컴퓨터: 보
+승리!
+<span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">바위</span>
+컴퓨터: 바위
+무승부!
+<span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">q</span>
+
+결과 - 승:1 패:0 무:1</div>
         <button class="code-toggle" onclick="tryToggle('rps-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="rps-code">import random
 
@@ -226,14 +233,15 @@ print(f"\n결과 - 승:{win} 패:{lose} 무:{draw}")</div>
 
       <div class="card">
         <div><span class="badge badge-mid">중급</span><p class="card-title">숫자 맞추기 게임</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="guess-out">1~100 사이 숫자를 맞춰보세요! (10번 기회)</div>
-          <div class="demo-row">
-            <input class="demo-input" type="number" id="guess-in" placeholder="숫자 입력" min="1" max="100">
-            <button class="demo-btn" onclick="guessPlay()">추측</button>
-            <button class="demo-btn" onclick="guessReset()">새 게임</button>
-          </div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">1~100 사이 숫자를 맞춰보세요!</span>
+<span class="term-prompt">기회는 10번입니다.</span>
+
+<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">50</span>
+더 큰 숫자입니다. (남은 기회: 9)
+<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">75</span>
+더 작은 숫자입니다. (남은 기회: 8)
+<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">63</span>
+정답! 3번 만에 맞췄습니다!</div>
         <button class="code-toggle" onclick="tryToggle('guess-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="guess-code">import random
 
@@ -261,10 +269,20 @@ else:
 
       <div class="card">
         <div><span class="badge badge-mid">중급</span><p class="card-title">텍스트 RPG</p></div>
-        <div class="demo-area">
-          <div class="demo-output" id="rpg-out">시작 버튼을 눌러 모험을 시작하세요!</div>
-          <div class="demo-row" id="rpg-btns"><button class="demo-btn" onclick="rpgStart()">시작</button></div>
-        </div>
+        <div class="demo-area"><span class="term-prompt">용사의 이름을 입력하세요 : </span><span class="term-input">홍길동</span>
+
+홍길동 용사여, 모험을 시작합니다!
+
+슬라임이(가) 나타났다! (HP:20)
+<span class="term-prompt">1.공격 2.아이템 3.도망 : </span><span class="term-input">1</span>
+18 데미지!
+적의 반격! 내 HP: 95
+<span class="term-prompt">1.공격 2.아이템 3.도망 : </span><span class="term-input">1</span>
+14 데미지!
+슬라임 처치! 포션 획득!
+<span class="term-prompt">계속하시겠습니까? (y/n) : </span><span class="term-input">n</span>
+
+최종 기록: 1마리 처치</div>
         <button class="code-toggle" onclick="tryToggle('rpg-code',this)">▶ 코드 보기</button>
         <div class="code-block" id="rpg-code">import random
 
