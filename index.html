@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>융합코딩부 파이썬 프로젝트</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="max-w">
+  <h1>융합코딩부 파이썬 프로젝트</h1>
+  <p class="subtitle">데모를 직접 실행해보고, 비밀번호 입력 후 코드를 확인하세요.</p>
+
+  <div class="pw-banner">
+    <span>코드 열람 비밀번호</span>
+    <input type="password" id="pw-input" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')pwCheck()">
+    <button onclick="pwCheck()">확인</button>
+    <span class="pw-status" id="pw-status"></span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('init')">초급반</button>
+    <button class="tab" onclick="switchTab('mid')">중급반</button>
+  </div>
+
+  <div class="section active" id="sec-init">
+    <div class="grid">
+
+      <div class="card">
+        <div><span class="badge badge-init">초급</span><p class="card-title">MBTI 테스트</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="mbti-out">아래 버튼을 눌러 시작하세요.</div>
+          <div class="demo-row" id="mbti-btns"><button class="demo-btn" onclick="mbtiStart()">시작</button></div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('mbti-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="mbti-code">print(" &lt; 당신의 MBTI는 무엇인가요? &gt; ")
+print(" y/n으로 대답해주세요. ")
+
+while True:
+    ei = input("말을 잘 거는 편인가요? : ")
+    if ei == "y": ei = 'E'; break
+    elif ei == "n": ei = 'I'; break
+    else: print("y랑 n만 입력해주세요.")
+
+while True:
+    ns = input("상상하는 것을 좋아하나요? : ")
+    if ns == "y": ns = 'N'; break
+    elif ns == "n": ns = 'S'; break
+    else: print("y랑 n만 입력해주세요.")
+
+while True:
+    ft = input("공감하는 것을 어려워하나요? : ")
+    if ft == "y": ft = 'T'; break
+    elif ft == "n": ft = 'F'; break
+    else: print("y랑 n만 입력해주세요.")
+
+while True:
+    pj = input("현재 방이 어질러진 상태인가요? : ")
+    if pj == "y": pj = 'P'; break
+    elif pj == "n": pj = 'J'; break
+    else: print("y랑 n만 입력해주세요.")
+
+print("당신의 MBTI는 " + ei+ns+ft+pj + "입니다!")</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-init">초급</span><p class="card-title">사칙연산 계산기</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="calc-out">두 숫자를 입력하고 계산하세요.</div>
+          <div class="demo-row">
+            <input class="demo-input" type="number" id="calc-a" placeholder="첫번째 숫자" value="12">
+            <input class="demo-input" type="number" id="calc-b" placeholder="두번째 숫자" value="4">
+            <button class="demo-btn" onclick="calcRun()">계산</button>
+          </div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('calc-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="calc-code">print("&lt; 사칙 연산 계산기 &gt;")
+a = int(input("첫번째 숫자를 입력해주세요 : "))
+b = int(input("두번째 숫자를 입력해주세요 : "))
+
+print(a, " + ", b, " = ", a+b)
+print(a, " - ", b, " = ", a-b)
+print(a, " * ", b, " = ", a*b)
+print(a, " / ", b, " = ", a/b)</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-init">초급</span><p class="card-title">나만의 퀴즈 게임</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="quiz-out">시작 버튼을 눌러 퀴즈를 시작하세요!</div>
+          <div class="demo-row" id="quiz-row"><button class="demo-btn" onclick="quizStart()">시작</button></div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('quiz-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="quiz-code">print("=== 나만의 퀴즈 게임 ===")
+score = 0
+
+answer = input("Q1. 파이썬을 만든 사람은? : ")
+if answer == "귀도 반 로섬":
+    print("정답!"); score += 1
+else:
+    print("오답! 정답은 귀도 반 로섬입니다.")
+
+answer = input("Q2. 대한민국의 수도는? : ")
+if answer == "서울":
+    print("정답!"); score += 1
+else:
+    print("오답! 정답은 서울입니다.")
+
+answer = input("Q3. 1 + 1 = ? : ")
+if answer == "2":
+    print("정답!"); score += 1
+else:
+    print("오답! 정답은 2입니다.")
+
+print("최종 점수:", score, "/ 3")</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-init">초급</span><p class="card-title">짝수/홀수 판별기</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="num-out">숫자를 입력하고 판별하세요.</div>
+          <div class="demo-row">
+            <input class="demo-input" type="number" id="num-in" placeholder="숫자 입력" value="7">
+            <button class="demo-btn" onclick="numRun()">판별</button>
+          </div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('num-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="num-code">n = int(input("숫자를 입력하세요 : "))
+
+if n % 2 == 0:
+    print(n, "은(는) 짝수입니다.")
+else:
+    print(n, "은(는) 홀수입니다.")
+
+def is_prime(n):
+    if n &lt; 2: return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0: return False
+    return True
+
+if is_prime(n):
+    print(n, "은(는) 소수입니다.")
+else:
+    print(n, "은(는) 소수가 아닙니다.")</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="sec-mid">
+    <div class="grid">
+
+      <div class="card">
+        <div><span class="badge badge-mid">중급</span><p class="card-title">학교 성적 계산기</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="grade-out">과목별 점수를 입력하고 계산하세요.</div>
+          <div class="demo-row" style="flex-direction:column;gap:6px">
+            <div style="display:flex;gap:6px">
+              <input class="demo-input" type="number" id="g1" placeholder="국어" value="85">
+              <input class="demo-input" type="number" id="g2" placeholder="수학" value="72">
+              <input class="demo-input" type="number" id="g3" placeholder="영어" value="90">
+            </div>
+            <button class="demo-btn" style="align-self:flex-start" onclick="gradeRun()">계산</button>
+          </div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('grade-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="grade-code">subjects = ["국어", "수학", "영어"]
+scores = []
+
+for s in subjects:
+    score = int(input(s + " 점수를 입력하세요 : "))
+    scores.append(score)
+
+avg = sum(scores) / len(scores)
+
+if avg >= 90: grade = "A"
+elif avg >= 80: grade = "B"
+elif avg >= 70: grade = "C"
+elif avg >= 60: grade = "D"
+else: grade = "F"
+
+print("\n=== 성적 결과 ===")
+for i in range(len(subjects)):
+    print(subjects[i], ":", scores[i], "점")
+print("평균 :", round(avg, 1), "점")
+print("등급 :", grade)</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-mid">중급</span><p class="card-title">가위바위보</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="rps-out">아래 버튼을 눌러 가위바위보!</div>
+          <div class="demo-row">
+            <button class="demo-btn" onclick="rpsPlay('가위')">가위</button>
+            <button class="demo-btn" onclick="rpsPlay('바위')">바위</button>
+            <button class="demo-btn" onclick="rpsPlay('보')">보</button>
+            <button class="demo-btn" onclick="rpsReset()">초기화</button>
+          </div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('rps-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="rps-code">import random
+
+choices = ["가위", "바위", "보"]
+win = lose = draw = 0
+
+while True:
+    player = input("가위/바위/보 (종료: q) : ")
+    if player == "q": break
+    if player not in choices:
+        print("올바른 입력이 아닙니다."); continue
+
+    computer = random.choice(choices)
+    print("컴퓨터:", computer)
+
+    if player == computer:
+        print("무승부!"); draw += 1
+    elif (player=="가위" and computer=="보") or \
+         (player=="바위" and computer=="가위") or \
+         (player=="보" and computer=="바위"):
+        print("승리!"); win += 1
+    else:
+        print("패배!"); lose += 1
+
+print(f"\n결과 - 승:{win} 패:{lose} 무:{draw}")</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-mid">중급</span><p class="card-title">숫자 맞추기 게임</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="guess-out">1~100 사이 숫자를 맞춰보세요! (10번 기회)</div>
+          <div class="demo-row">
+            <input class="demo-input" type="number" id="guess-in" placeholder="숫자 입력" min="1" max="100">
+            <button class="demo-btn" onclick="guessPlay()">추측</button>
+            <button class="demo-btn" onclick="guessReset()">새 게임</button>
+          </div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('guess-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="guess-code">import random
+
+answer = random.randint(1, 100)
+tries = 0
+max_tries = 10
+
+print("1~100 사이 숫자를 맞춰보세요!")
+print(f"기회는 {max_tries}번입니다.")
+
+while tries &lt; max_tries:
+    guess = int(input("숫자를 입력하세요 : "))
+    tries += 1
+
+    if guess == answer:
+        print(f"정답! {tries}번 만에 맞췄습니다!")
+        break
+    elif guess &lt; answer:
+        print(f"더 큰 숫자입니다. (남은 기회: {max_tries-tries})")
+    else:
+        print(f"더 작은 숫자입니다. (남은 기회: {max_tries-tries})")
+else:
+    print(f"게임 오버! 정답은 {answer}였습니다.")</div>
+      </div>
+
+      <div class="card">
+        <div><span class="badge badge-mid">중급</span><p class="card-title">텍스트 RPG</p></div>
+        <div class="demo-area">
+          <div class="demo-output" id="rpg-out">시작 버튼을 눌러 모험을 시작하세요!</div>
+          <div class="demo-row" id="rpg-btns"><button class="demo-btn" onclick="rpgStart()">시작</button></div>
+        </div>
+        <button class="code-toggle" onclick="tryToggle('rpg-code',this)">▶ 코드 보기</button>
+        <div class="code-block" id="rpg-code">import random
+
+name = input("용사의 이름을 입력하세요 : ")
+hp = 100
+items = []
+kills = 0
+monsters = [
+    {"name":"슬라임","hp":20,"atk":5},
+    {"name":"고블린","hp":35,"atk":12},
+    {"name":"드래곤","hp":80,"atk":25}
+]
+
+print(f"\n{name} 용사여, 모험을 시작합니다!")
+
+while hp > 0:
+    monster = random.choice(monsters).copy()
+    print(f"\n{monster['name']}이(가) 나타났다! (HP:{monster['hp']})")
+
+    while monster["hp"] > 0 and hp > 0:
+        action = input("1.공격 2.아이템 3.도망 : ")
+        if action == "1":
+            dmg = random.randint(10, 25)
+            monster["hp"] -= dmg
+            print(f"{dmg} 데미지!")
+            if monster["hp"] > 0:
+                hp -= monster["atk"]
+                print(f"적의 반격! 내 HP: {hp}")
+        elif action == "2":
+            if "포션" in items:
+                hp = min(100, hp+30)
+                items.remove("포션")
+                print(f"포션 사용! HP: {hp}")
+            else:
+                print("아이템이 없습니다.")
+        elif action == "3":
+            print("도망쳤다!"); break
+
+    if monster["hp"] &lt;= 0:
+        kills += 1
+        if random.random() > 0.5:
+            items.append("포션")
+            print("포션 획득!")
+
+    cont = input("계속하시겠습니까? (y/n) : ")
+    if cont != "y": break
+
+print(f"\n최종 기록: {kills}마리 처치")</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
