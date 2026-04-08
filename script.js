@@ -8,6 +8,15 @@ const PROBLEMS = [
     sampleIO: `<span class="prompt">&lt; 당신의 MBTI는 무엇인가요? &gt;</span>
 <span class="prompt">y/n으로 대답해주세요.</span>
 
+<span class="prompt">말을 잘 거는 편인가요? : </span><span class="user-input">y</span>
+<span class="prompt">상상하는 것을 좋아하나요? : </span><span class="user-input">n</span>
+<span class="prompt">공감하는 것을 어려워하나요? : </span><span class="user-input">y</span>
+<span class="prompt">현재 방이 어질러진 상태인가요? : </span><span class="user-input">n</span>
+
+당신의 MBTI는 ESTJ입니다!`,
+    sampleIOException: `<span class="prompt">&lt; 당신의 MBTI는 무엇인가요? &gt;</span>
+<span class="prompt">y/n으로 대답해주세요.</span>
+
 <span class="prompt">말을 잘 거는 편인가요? : </span><span class="user-input">abc</span>
 y랑 n만 입력해주세요.
 <span class="prompt">말을 잘 거는 편인가요? : </span><span class="user-input">y</span>
@@ -52,6 +61,14 @@ print("당신의 MBTI는 " + ei+ns+ft+pj + "입니다!")`
     description: "두 숫자를 입력받아 사칙연산 결과를 보여주는 계산기입니다. 0으로 나누기 예외처리가 포함되어 있습니다.",
     sampleIO: `<span class="prompt">&lt; 사칙 연산 계산기 &gt;</span>
 <span class="prompt">첫번째 숫자를 입력해주세요 : </span><span class="user-input">12</span>
+<span class="prompt">두번째 숫자를 입력해주세요 : </span><span class="user-input">4</span>
+
+12  +  4  =  16
+12  -  4  =  8
+12  *  4  =  48
+12  /  4  =  3.0`,
+    sampleIOException: `<span class="prompt">&lt; 사칙 연산 계산기 &gt;</span>
+<span class="prompt">첫번째 숫자를 입력해주세요 : </span><span class="user-input">12</span>
 <span class="prompt">두번째 숫자를 입력해주세요 : </span><span class="user-input">0</span>
 
 12  +  0  =  12
@@ -76,6 +93,16 @@ else:
     difficulty: "초급",
     description: "3개의 퀴즈를 풀고 최종 점수를 확인하는 게임입니다. 빈 입력에 대한 예외처리가 포함되어 있습니다.",
     sampleIO: `<span class="prompt">=== 나만의 퀴즈 게임 ===</span>
+
+<span class="prompt">Q1. 파이썬을 만든 사람은? : </span><span class="user-input">귀도 반 로섬</span>
+정답!
+<span class="prompt">Q2. 대한민국의 수도는? : </span><span class="user-input">서울</span>
+정답!
+<span class="prompt">Q3. 1 + 1 = ? : </span><span class="user-input">3</span>
+오답! 정답은 2입니다.
+
+최종 점수: 2 / 3`,
+    sampleIOException: `<span class="prompt">=== 나만의 퀴즈 게임 ===</span>
 
 <span class="prompt">Q1. 파이썬을 만든 사람은? : </span><span class="user-input"></span>
 답을 입력해주세요.
@@ -133,6 +160,7 @@ print("최종 점수:", score, "/ 3")`
     sampleIO: `<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">7</span>
 
 7 은(는) 홀수입니다.`,
+    sampleIOException: null,
     code: `n = int(input("숫자를 입력하세요 : "))
 
 if n % 2 == 0:
@@ -145,7 +173,17 @@ else:
     title: "학교 성적 계산기",
     difficulty: "중급",
     description: "국어, 수학, 영어 점수를 입력받아 평균과 등급을 계산하는 프로그램입니다. 점수 범위 검증이 포함되어 있습니다.",
-    sampleIO: `<span class="prompt">국어 점수를 입력하세요 : </span><span class="user-input">105</span>
+    sampleIO: `<span class="prompt">국어 점수를 입력하세요 : </span><span class="user-input">85</span>
+<span class="prompt">수학 점수를 입력하세요 : </span><span class="user-input">72</span>
+<span class="prompt">영어 점수를 입력하세요 : </span><span class="user-input">90</span>
+
+=== 성적 결과 ===
+국어 : 85 점
+수학 : 72 점
+영어 : 90 점
+평균 : 82.3 점
+등급 : B`,
+    sampleIOException: `<span class="prompt">국어 점수를 입력하세요 : </span><span class="user-input">105</span>
 0~100 사이의 점수를 입력해주세요.
 <span class="prompt">국어 점수를 입력하세요 : </span><span class="user-input">85</span>
 <span class="prompt">수학 점수를 입력하세요 : </span><span class="user-input">72</span>
@@ -188,7 +226,16 @@ print("등급 :", grade)`
     title: "가위바위보",
     difficulty: "중급",
     description: "컴퓨터와 가위바위보 대결을 하는 게임입니다. 잘못된 입력 검증과 전적 기록이 포함되어 있습니다.",
-    sampleIO: `<span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">주먹</span>
+    sampleIO: `<span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">가위</span>
+컴퓨터: 보
+승리!
+<span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">바위</span>
+컴퓨터: 바위
+무승부!
+<span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">q</span>
+
+결과 - 승:1 패:0 무:1`,
+    sampleIOException: `<span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">주먹</span>
 올바른 입력이 아닙니다.
 <span class="prompt">가위/바위/보 (종료: q) : </span><span class="user-input">가위</span>
 컴퓨터: 보
@@ -232,6 +279,15 @@ print(f"\\n결과 - 승:{win} 패:{lose} 무:{draw}")`
     sampleIO: `<span class="prompt">1~100 사이 숫자를 맞춰보세요!</span>
 <span class="prompt">기회는 10번입니다.</span>
 
+<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">50</span>
+더 큰 숫자입니다. (남은 기회: 9)
+<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">75</span>
+더 작은 숫자입니다. (남은 기회: 8)
+<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">63</span>
+정답! 3번 만에 맞췄습니다!`,
+    sampleIOException: `<span class="prompt">1~100 사이 숫자를 맞춰보세요!</span>
+<span class="prompt">기회는 10번입니다.</span>
+
 <span class="prompt">숫자를 입력하세요 : </span><span class="user-input">200</span>
 1~100 사이의 숫자를 입력해주세요.
 <span class="prompt">숫자를 입력하세요 : </span><span class="user-input">50</span>
@@ -272,6 +328,20 @@ else:
     difficulty: "중급",
     description: "몬스터를 처치하고 아이템을 얻는 텍스트 기반 RPG 게임입니다. 다양한 입력 검증과 전투 시스템이 포함되어 있습니다.",
     sampleIO: `<span class="prompt">용사의 이름을 입력하세요 : </span><span class="user-input">홍길동</span>
+
+홍길동 용사여, 모험을 시작합니다!
+
+슬라임이(가) 나타났다! (HP:20)
+<span class="prompt">1.공격 2.아이템 3.도망 : </span><span class="user-input">1</span>
+18 데미지!
+적의 반격! 내 HP: 95
+<span class="prompt">1.공격 2.아이템 3.도망 : </span><span class="user-input">1</span>
+14 데미지!
+슬라임 처치! 포션 획득!
+<span class="prompt">계속하시겠습니까? (y/n) : </span><span class="user-input">n</span>
+
+최종 기록: 1마리 처치`,
+    sampleIOException: `<span class="prompt">용사의 이름을 입력하세요 : </span><span class="user-input">홍길동</span>
 
 홍길동 용사여, 모험을 시작합니다!
 
@@ -430,6 +500,14 @@ function showDetail(id) {
 
   $('detail-desc').textContent = problem.description;
   $('detail-terminal').innerHTML = problem.sampleIO;
+
+  const exSection = $('exception-section');
+  if (problem.sampleIOException) {
+    exSection.style.display = '';
+    $('detail-terminal-ex').innerHTML = problem.sampleIOException;
+  } else {
+    exSection.style.display = 'none';
+  }
 
   const codeSection = $('code-section');
   const codeBlock = $('detail-code');
