@@ -3,339 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>융합코딩부 파이썬 프로젝트</title>
+<title>융합코딩부 Online Judge</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="max-w">
-  <h1>융합코딩부 파이썬 프로젝트</h1>
-  <p class="subtitle">샘플 입출력을 확인하고, 비밀번호 입력 후 코드를 확인하세요.</p>
 
-  <div class="pw-banner">
-    <span>코드 열람 비밀번호</span>
-    <input type="password" id="pw-input" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')pwCheck()">
-    <button onclick="pwCheck()">확인</button>
-    <span class="pw-status" id="pw-status"></span>
+<header>
+  <div class="container">
+    <h1><a href="#" id="site-title">융합코딩부 Online Judge</a></h1>
+    <p class="subtitle">파이썬 프로젝트 문제를 풀고, 샘플 입출력을 확인하세요.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- List View -->
+  <div id="view-list">
+    <div class="toolbar">
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        <button class="filter-btn" data-filter="초급">초급</button>
+        <button class="filter-btn" data-filter="중급">중급</button>
+      </div>
+      <div class="pw-group">
+        <input type="password" id="pw-input-list" placeholder="코드 열람 비밀번호">
+        <button class="pw-btn" onclick="pwCheck('pw-input-list')">확인</button>
+        <span class="pw-status" id="pw-status-list"></span>
+      </div>
+    </div>
+
+    <table class="problem-table">
+      <thead>
+        <tr>
+          <th class="col-id">#</th>
+          <th class="col-title">문제</th>
+          <th class="col-diff">난이도</th>
+        </tr>
+      </thead>
+      <tbody id="problem-tbody"></tbody>
+    </table>
   </div>
 
-  <div class="tabs">
-    <button class="tab active" onclick="switchTab('init')">초급반</button>
-    <button class="tab" onclick="switchTab('mid')">중급반</button>
-  </div>
+  <!-- Detail View -->
+  <div id="view-detail" style="display:none">
+    <button class="back-btn" onclick="location.hash=''">&larr; 목록으로</button>
 
-  <div class="section active" id="sec-init">
-    <div class="grid">
+    <div class="detail-header">
+      <span class="detail-id" id="detail-id"></span>
+      <h2 id="detail-title"></h2>
+      <span id="detail-diff"></span>
+    </div>
 
-      <div class="card">
-        <div><span class="badge badge-init">초급</span><p class="card-title">MBTI 테스트</p></div>
-        <div class="demo-area"><span class="term-prompt">&lt; 당신의 MBTI는 무엇인가요? &gt;</span>
-<span class="term-prompt">y/n으로 대답해주세요.</span>
+    <div class="detail-section">
+      <h3>문제 설명</h3>
+      <p id="detail-desc"></p>
+    </div>
 
-<span class="term-prompt">말을 잘 거는 편인가요? : </span><span class="term-input">y</span>
-<span class="term-prompt">상상하는 것을 좋아하나요? : </span><span class="term-input">n</span>
-<span class="term-prompt">공감하는 것을 어려워하나요? : </span><span class="term-input">y</span>
-<span class="term-prompt">현재 방이 어질러진 상태인가요? : </span><span class="term-input">n</span>
+    <div class="detail-section">
+      <h3>샘플 입출력</h3>
+      <div class="terminal" id="detail-terminal"></div>
+    </div>
 
-당신의 MBTI는 ESTJ입니다!</div>
-        <button class="code-toggle" onclick="tryToggle('mbti-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="mbti-code">print(" &lt; 당신의 MBTI는 무엇인가요? &gt; ")
-print(" y/n으로 대답해주세요. ")
-
-while True:
-    ei = input("말을 잘 거는 편인가요? : ")
-    if ei == "y": ei = 'E'; break
-    elif ei == "n": ei = 'I'; break
-    else: print("y랑 n만 입력해주세요.")
-
-while True:
-    ns = input("상상하는 것을 좋아하나요? : ")
-    if ns == "y": ns = 'N'; break
-    elif ns == "n": ns = 'S'; break
-    else: print("y랑 n만 입력해주세요.")
-
-while True:
-    ft = input("공감하는 것을 어려워하나요? : ")
-    if ft == "y": ft = 'T'; break
-    elif ft == "n": ft = 'F'; break
-    else: print("y랑 n만 입력해주세요.")
-
-while True:
-    pj = input("현재 방이 어질러진 상태인가요? : ")
-    if pj == "y": pj = 'P'; break
-    elif pj == "n": pj = 'J'; break
-    else: print("y랑 n만 입력해주세요.")
-
-print("당신의 MBTI는 " + ei+ns+ft+pj + "입니다!")</div>
+    <div class="detail-section" id="code-section">
+      <h3>코드</h3>
+      <div class="pw-group pw-inline">
+        <input type="password" id="pw-input-detail" placeholder="코드 열람 비밀번호">
+        <button class="pw-btn" onclick="pwCheck('pw-input-detail')">확인</button>
+        <span class="pw-status" id="pw-status-detail"></span>
       </div>
-
-      <div class="card">
-        <div><span class="badge badge-init">초급</span><p class="card-title">사칙연산 계산기</p></div>
-        <div class="demo-area"><span class="term-prompt">&lt; 사칙 연산 계산기 &gt;</span>
-<span class="term-prompt">첫번째 숫자를 입력해주세요 : </span><span class="term-input">12</span>
-<span class="term-prompt">두번째 숫자를 입력해주세요 : </span><span class="term-input">4</span>
-
-12  +  4  =  16
-12  -  4  =  8
-12  *  4  =  48
-12  /  4  =  3.0</div>
-        <button class="code-toggle" onclick="tryToggle('calc-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="calc-code">print("&lt; 사칙 연산 계산기 &gt;")
-a = int(input("첫번째 숫자를 입력해주세요 : "))
-b = int(input("두번째 숫자를 입력해주세요 : "))
-
-print(a, " + ", b, " = ", a+b)
-print(a, " - ", b, " = ", a-b)
-print(a, " * ", b, " = ", a*b)
-print(a, " / ", b, " = ", a/b)</div>
-      </div>
-
-      <div class="card">
-        <div><span class="badge badge-init">초급</span><p class="card-title">나만의 퀴즈 게임</p></div>
-        <div class="demo-area"><span class="term-prompt">=== 나만의 퀴즈 게임 ===</span>
-
-<span class="term-prompt">Q1. 파이썬을 만든 사람은? : </span><span class="term-input">귀도 반 로섬</span>
-정답!
-<span class="term-prompt">Q2. 대한민국의 수도는? : </span><span class="term-input">서울</span>
-정답!
-<span class="term-prompt">Q3. 1 + 1 = ? : </span><span class="term-input">3</span>
-오답! 정답은 2입니다.
-
-최종 점수: 2 / 3</div>
-        <button class="code-toggle" onclick="tryToggle('quiz-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="quiz-code">print("=== 나만의 퀴즈 게임 ===")
-score = 0
-
-answer = input("Q1. 파이썬을 만든 사람은? : ")
-if answer == "귀도 반 로섬":
-    print("정답!"); score += 1
-else:
-    print("오답! 정답은 귀도 반 로섬입니다.")
-
-answer = input("Q2. 대한민국의 수도는? : ")
-if answer == "서울":
-    print("정답!"); score += 1
-else:
-    print("오답! 정답은 서울입니다.")
-
-answer = input("Q3. 1 + 1 = ? : ")
-if answer == "2":
-    print("정답!"); score += 1
-else:
-    print("오답! 정답은 2입니다.")
-
-print("최종 점수:", score, "/ 3")</div>
-      </div>
-
-      <div class="card">
-        <div><span class="badge badge-init">초급</span><p class="card-title">짝수/홀수 판별기</p></div>
-        <div class="demo-area"><span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">7</span>
-
-7 은(는) 홀수입니다.
-7 은(는) 소수입니다.</div>
-        <button class="code-toggle" onclick="tryToggle('num-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="num-code">n = int(input("숫자를 입력하세요 : "))
-
-if n % 2 == 0:
-    print(n, "은(는) 짝수입니다.")
-else:
-    print(n, "은(는) 홀수입니다.")
-
-def is_prime(n):
-    if n &lt; 2: return False
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0: return False
-    return True
-
-if is_prime(n):
-    print(n, "은(는) 소수입니다.")
-else:
-    print(n, "은(는) 소수가 아닙니다.")</div>
-      </div>
-
+      <pre class="code-block" id="detail-code"></pre>
     </div>
   </div>
 
-  <div class="section" id="sec-mid">
-    <div class="grid">
+</main>
 
-      <div class="card">
-        <div><span class="badge badge-mid">중급</span><p class="card-title">학교 성적 계산기</p></div>
-        <div class="demo-area"><span class="term-prompt">국어 점수를 입력하세요 : </span><span class="term-input">85</span>
-<span class="term-prompt">수학 점수를 입력하세요 : </span><span class="term-input">72</span>
-<span class="term-prompt">영어 점수를 입력하세요 : </span><span class="term-input">90</span>
-
-=== 성적 결과 ===
-국어 : 85 점
-수학 : 72 점
-영어 : 90 점
-평균 : 82.3 점
-등급 : B</div>
-        <button class="code-toggle" onclick="tryToggle('grade-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="grade-code">subjects = ["국어", "수학", "영어"]
-scores = []
-
-for s in subjects:
-    score = int(input(s + " 점수를 입력하세요 : "))
-    scores.append(score)
-
-avg = sum(scores) / len(scores)
-
-if avg >= 90: grade = "A"
-elif avg >= 80: grade = "B"
-elif avg >= 70: grade = "C"
-elif avg >= 60: grade = "D"
-else: grade = "F"
-
-print("\n=== 성적 결과 ===")
-for i in range(len(subjects)):
-    print(subjects[i], ":", scores[i], "점")
-print("평균 :", round(avg, 1), "점")
-print("등급 :", grade)</div>
-      </div>
-
-      <div class="card">
-        <div><span class="badge badge-mid">중급</span><p class="card-title">가위바위보</p></div>
-        <div class="demo-area"><span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">가위</span>
-컴퓨터: 보
-승리!
-<span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">바위</span>
-컴퓨터: 바위
-무승부!
-<span class="term-prompt">가위/바위/보 (종료: q) : </span><span class="term-input">q</span>
-
-결과 - 승:1 패:0 무:1</div>
-        <button class="code-toggle" onclick="tryToggle('rps-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="rps-code">import random
-
-choices = ["가위", "바위", "보"]
-win = lose = draw = 0
-
-while True:
-    player = input("가위/바위/보 (종료: q) : ")
-    if player == "q": break
-    if player not in choices:
-        print("올바른 입력이 아닙니다."); continue
-
-    computer = random.choice(choices)
-    print("컴퓨터:", computer)
-
-    if player == computer:
-        print("무승부!"); draw += 1
-    elif (player=="가위" and computer=="보") or \
-         (player=="바위" and computer=="가위") or \
-         (player=="보" and computer=="바위"):
-        print("승리!"); win += 1
-    else:
-        print("패배!"); lose += 1
-
-print(f"\n결과 - 승:{win} 패:{lose} 무:{draw}")</div>
-      </div>
-
-      <div class="card">
-        <div><span class="badge badge-mid">중급</span><p class="card-title">숫자 맞추기 게임</p></div>
-        <div class="demo-area"><span class="term-prompt">1~100 사이 숫자를 맞춰보세요!</span>
-<span class="term-prompt">기회는 10번입니다.</span>
-
-<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">50</span>
-더 큰 숫자입니다. (남은 기회: 9)
-<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">75</span>
-더 작은 숫자입니다. (남은 기회: 8)
-<span class="term-prompt">숫자를 입력하세요 : </span><span class="term-input">63</span>
-정답! 3번 만에 맞췄습니다!</div>
-        <button class="code-toggle" onclick="tryToggle('guess-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="guess-code">import random
-
-answer = random.randint(1, 100)
-tries = 0
-max_tries = 10
-
-print("1~100 사이 숫자를 맞춰보세요!")
-print(f"기회는 {max_tries}번입니다.")
-
-while tries &lt; max_tries:
-    guess = int(input("숫자를 입력하세요 : "))
-    tries += 1
-
-    if guess == answer:
-        print(f"정답! {tries}번 만에 맞췄습니다!")
-        break
-    elif guess &lt; answer:
-        print(f"더 큰 숫자입니다. (남은 기회: {max_tries-tries})")
-    else:
-        print(f"더 작은 숫자입니다. (남은 기회: {max_tries-tries})")
-else:
-    print(f"게임 오버! 정답은 {answer}였습니다.")</div>
-      </div>
-
-      <div class="card">
-        <div><span class="badge badge-mid">중급</span><p class="card-title">텍스트 RPG</p></div>
-        <div class="demo-area"><span class="term-prompt">용사의 이름을 입력하세요 : </span><span class="term-input">홍길동</span>
-
-홍길동 용사여, 모험을 시작합니다!
-
-슬라임이(가) 나타났다! (HP:20)
-<span class="term-prompt">1.공격 2.아이템 3.도망 : </span><span class="term-input">1</span>
-18 데미지!
-적의 반격! 내 HP: 95
-<span class="term-prompt">1.공격 2.아이템 3.도망 : </span><span class="term-input">1</span>
-14 데미지!
-슬라임 처치! 포션 획득!
-<span class="term-prompt">계속하시겠습니까? (y/n) : </span><span class="term-input">n</span>
-
-최종 기록: 1마리 처치</div>
-        <button class="code-toggle" onclick="tryToggle('rpg-code',this)">▶ 코드 보기</button>
-        <div class="code-block" id="rpg-code">import random
-
-name = input("용사의 이름을 입력하세요 : ")
-hp = 100
-items = []
-kills = 0
-monsters = [
-    {"name":"슬라임","hp":20,"atk":5},
-    {"name":"고블린","hp":35,"atk":12},
-    {"name":"드래곤","hp":80,"atk":25}
-]
-
-print(f"\n{name} 용사여, 모험을 시작합니다!")
-
-while hp > 0:
-    monster = random.choice(monsters).copy()
-    print(f"\n{monster['name']}이(가) 나타났다! (HP:{monster['hp']})")
-
-    while monster["hp"] > 0 and hp > 0:
-        action = input("1.공격 2.아이템 3.도망 : ")
-        if action == "1":
-            dmg = random.randint(10, 25)
-            monster["hp"] -= dmg
-            print(f"{dmg} 데미지!")
-            if monster["hp"] > 0:
-                hp -= monster["atk"]
-                print(f"적의 반격! 내 HP: {hp}")
-        elif action == "2":
-            if "포션" in items:
-                hp = min(100, hp+30)
-                items.remove("포션")
-                print(f"포션 사용! HP: {hp}")
-            else:
-                print("아이템이 없습니다.")
-        elif action == "3":
-            print("도망쳤다!"); break
-
-    if monster["hp"] &lt;= 0:
-        kills += 1
-        if random.random() > 0.5:
-            items.append("포션")
-            print("포션 획득!")
-
-    cont = input("계속하시겠습니까? (y/n) : ")
-    if cont != "y": break
-
-print(f"\n최종 기록: {kills}마리 처치")</div>
-      </div>
-
-    </div>
+<footer>
+  <div class="container">
+    <p>&copy; 2026 융합코딩부</p>
   </div>
-</div>
+</footer>
 
 <script src="script.js"></script>
 </body>
