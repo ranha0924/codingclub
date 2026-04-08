@@ -23,7 +23,7 @@ body {
 header {
   background: #24283b;
   border-bottom: 1px solid #2f3549;
-  padding: 1.5rem 0;
+  padding: 0.75rem 0;
 }
 header h1 { font-size: 1.3rem; }
 header h1 a {
@@ -35,13 +35,13 @@ header h1 a:hover { color: #89b4fa; }
 .subtitle {
   color: #565f89;
   font-size: 0.85rem;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
 /* ===== MAIN ===== */
 main {
   flex: 1;
-  padding: 1.5rem 0 2rem;
+  padding: 2rem 0;
 }
 
 /* ===== TOOLBAR ===== */
