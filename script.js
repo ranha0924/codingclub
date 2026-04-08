@@ -156,12 +156,22 @@ print("최종 점수:", score, "/ 3")`
     id: 4,
     title: "짝수/홀수 판별기",
     difficulty: "초급",
-    description: "숫자를 입력받아 짝수인지 홀수인지 판별해주는 프로그램입니다.",
-    sampleIO: `<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">7</span>
+    description: "숫자를 입력받아 짝수인지 홀수인지 판별해주는 프로그램입니다. 문자 입력 시 다시 입력을 요청합니다.",
+    sampleIO: `<span class="prompt">숫자�� 입력하세요 : </span><span class="user-input">7</span>
 
 7 은(는) 홀수입니다.`,
-    sampleIOException: null,
-    code: `n = int(input("숫자를 입력하세요 : "))
+    sampleIOException: `<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">abc</span>
+숫자를 입력해주세요.
+<span class="prompt">숫자를 입력하세요 : </span><span class="user-input">7</span>
+
+7 은(는) 홀수입니다.`,
+    code: `while True:
+    text = input("숫자를 입력하세��� : ")
+    if text.isdigit():
+        break
+    print("숫자를 입력해주세요.")
+
+n = int(text)
 
 if n % 2 == 0:
     print(n, "은(는) 짝수입니다.")
